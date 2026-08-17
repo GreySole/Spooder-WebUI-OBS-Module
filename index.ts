@@ -2,7 +2,7 @@ import { faGamepad } from '@fortawesome/free-solid-svg-icons';
 import type { ModuleDefinition } from '../../types';
 import FormOBSSceneItemSelect from './components/FormOBSSceneItemSelect';
 import OBSSceneItemSelect from './components/OBSSceneItemSelect';
-import OBSDeck from './obsDeck/OBSDeck';
+import ObsDeckRoot from './obsDeck/ObsDeckRoot';
 import { obsControlApi } from './obsControlSlice';
 import { obsFetchApi } from './obsFetchSlice';
 import { obsApi } from './obsSlice';
@@ -15,7 +15,7 @@ const ObsModule: ModuleDefinition = {
     // Sits with the decks (OSC Monitor, Mod UI), as module tabs do by default.
     parentTab: 'deck',
   },
-  Component: OBSDeck,
+  Component: ObsDeckRoot,
   // The backend splits OBS over three route prefixes (/obs, /obs/fetch, /obs/control),
   // one RTK Query api each.
   api: [obsApi, obsFetchApi, obsControlApi],

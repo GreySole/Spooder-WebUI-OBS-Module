@@ -1,0 +1,51 @@
+import osc from 'osc-js';
+import React, { useEffect } from 'react';
+import VolumeController from './volumeControl/VolumeController';
+import SceneController from './sceneController/SceneController';
+import useOBS from '../useOBS';
+import OutputController from './outputController/OutputController';
+import SourceControl from './sourceControl/SourceControl';
+import ObsLogin from './login/ObsLogin';
+import { Box, CircleLoader, useOSC } from '@spooder/webui-component-library';
+import PageCircleLoader from '../../../../ui/common/input/general/PageCircleLoader';
+
+export default function OBS() {
+  const { isReady: isOSCReady } = useOSC();
+  const { getObsSettings, getObsStatus, getConnectObsRemote, getDisconnectObsRemote } = useOBS();
+  const { connectObsRemote } = getConnectObsRemote();
+  const { disconnectObsRemote } = getDisconnectObsRemote();
+  const { data: obsStatus, isLoading: statusLoading, error: statusError } = getObsStatus();
+  const { data: obsData, isLoading: obsLoading, error: obsError } = getObsSettings();
+
+  useEffect(() => {
+    connectObsRemote();
+    return () => {
+      disconnectObsRemote();
+    };
+  }, []);
+
+  if (obsLoading || statusLoading) {
+    return <PageCircleLoader />;
+  }
+
+  console.log('IS OBS OSC READY', isOSCReady, obsStatus);
+
+  if (isOSCReady && obsStatus.connected) {
+    return (
+      <Box flexFlow='column' width='100%'>
+        <OutputController />
+        <SceneController />
+        <SourceControl />
+        <VolumeController />
+      </Box>
+    );
+  } else {
+    if (!isOSCReady) {
+      return <h1>Hold on...we're connecting to OSC</h1>;
+    } else if (!obsData.connected) {
+      return (
+        <ObsLogin obsConfig={obsData} />
+      );
+    }
+  }
+}

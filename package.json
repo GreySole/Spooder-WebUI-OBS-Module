@@ -1,0 +1,16 @@
+{
+  "name": "@spooder-webui-modules/obs",
+  "version": "0.1.0",
+  "private": true,
+  "description": "OBS integration module for the Spooder webui. Consumed as source via git submodule, not published to npm.",
+  "peerDependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-hook-form": "^7.52.0",
+    "@reduxjs/toolkit": "^2.2.5",
+    "@fortawesome/free-solid-svg-icons": "^6.1.1",
+    "@fortawesome/react-fontawesome": "^0.1.18",
+    "@spooder/webui-component-library": "^0.2.0",
+    "osc-js": "^2.3.2"
+  }
+}

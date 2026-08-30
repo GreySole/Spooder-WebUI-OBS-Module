@@ -35,16 +35,6 @@ export const obsApi = createApi({
     getScenes: builder.query({
       query: () => '/get_scenes',
     }),
-    saveObsSettings: builder.mutation({
-      query: (form) => ({
-        url: '/save_output_settings',
-        method: 'post',
-        body: form,
-        headers: {
-          'Content-type': 'application/json;',
-        },
-      }),
-    }),
   }),
 });
 
@@ -55,5 +45,4 @@ export const {
   useGetObsStatusQuery,
   useGetObsSettingsQuery,
   useGetScenesQuery,
-  useSaveObsSettingsMutation,
 } = obsApi;

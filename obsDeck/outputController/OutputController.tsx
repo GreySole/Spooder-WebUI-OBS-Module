@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { faCircle, faStream, faCog, faPause, faPlay } from '@fortawesome/free-solid-svg-icons';
+import { faCircle, faStream, faPause, faPlay } from '@fortawesome/free-solid-svg-icons';
 import {
   Border,
   Box,
   Button,
-  FormBoolSwitch,
   Stack,
   TypeFace,
   useOSC,
@@ -33,12 +32,6 @@ export default function OutputController() {
   const { pauseRecord } = getPauseRecord();
   const { resumeRecord } = getResumeRecord();
 
-  const [settings, setSettings] = useState({
-    recordRename: false,
-    frameDropAlert: false,
-    disconnectAlert: false,
-  });
-  const [settingsOpen, setSettingsOpen] = useState<Boolean>(false);
   const { isMobileDevice } = useTheme();
   const [outputInterval, setOutputInterval] = useState<any>();
 
@@ -85,27 +78,6 @@ export default function OutputController() {
     return null;
   }
 
-  function getSettings() {
-    fetch('/obs/get_output_settings')
-      .then((response) => response.json())
-      .then((data) => {
-        let newSettings = Object.assign(settings, data);
-        setSettings(newSettings);
-      });
-  }
-
-  function saveSettings() {
-    fetch('/obs/save_output_settings', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-      body: JSON.stringify(Object.assign({}, settings)),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        closeSettings();
-      });
-  }
-
   function toggleStream() {
     if (streamStatus.outputActive) {
       stopStream();
@@ -143,32 +115,6 @@ export default function OutputController() {
     if (bytes == 0) return '0 Byte';
     var i = Math.floor(Math.log(bytes) / Math.log(1024));
     return Math.round(bytes / Math.pow(1024, i)) + ' ' + sizes[i];
-  }
-
-  function closeSettings() {
-    getSettings();
-    setSettingsOpen(false);
-  }
-
-  if (settingsOpen) {
-    return (
-      <div className='deck-component deck-output-controller'>
-        <div className='output-settings-container'>
-          <FormBoolSwitch
-            label='Set recording file to stream name (excludes special characters and takes the left side of |'
-            formKey={''}
-          />
-          <FormBoolSwitch label='Alert chat on consistant frame drops and recovery' formKey={''} />
-          <FormBoolSwitch label='Alert chat on disconnection and recovery' formKey={''} />
-          <button className='save-button' onClick={saveSettings}>
-            Save
-          </button>
-          <button className='delete-button' onClick={closeSettings}>
-            Cancel
-          </button>
-        </div>
-      </div>
-    );
   }
 
   console.log('OUTPUT CONTROLLER', streamStatus, recordStatus);

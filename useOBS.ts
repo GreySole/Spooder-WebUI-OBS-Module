@@ -1,4 +1,3 @@
-import { FieldValues } from 'react-hook-form';
 import {
   useConnectObsMutation,
   useConnectRemoteMutation,
@@ -6,7 +5,6 @@ import {
   useGetObsSettingsQuery,
   useGetObsStatusQuery,
   useGetScenesQuery,
-  useSaveObsSettingsMutation,
 } from './obsSlice';
 import {
   useGetCurrentPreviewSceneMutation,
@@ -353,15 +351,6 @@ export default function useOBS() {
     };
   }
 
-  async function getSaveObsSettings() {
-    const [saveObsSettingsMutation, { isLoading, isSuccess, error }] = useSaveObsSettingsMutation();
-    function saveObsSettings(form: FieldValues) {
-      return saveObsSettingsMutation(form);
-    }
-
-    return { saveObsSettings, isLoading, isSuccess, error };
-  }
-
   return {
     getConnectObs,
     getConnectObsRemote,
@@ -369,7 +358,6 @@ export default function useOBS() {
     getObsStatus,
     getObsSettings,
     getScenes,
-    getSaveObsSettings,
     getObsFetchApi,
     getObsControlApi,
   };

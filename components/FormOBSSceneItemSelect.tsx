@@ -1,7 +1,7 @@
 import React from 'react';
 import { useFormContext } from 'react-hook-form';
 import useOBS from '../useOBS';
-import { buildKey } from '../../../../ui/tabs/eventsTab/FormKeys';
+import { buildKey } from '@spooder/webui-module-sdk';
 import { FormSelectDropdown } from '@spooder/webui-component-library';
 
 interface FormOBSChannelSelectProps {

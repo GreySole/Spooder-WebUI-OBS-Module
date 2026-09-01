@@ -1,6 +1,6 @@
 import React from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
-import { KeyedObject } from '../../../../../ui/Types';
+import { KeyedObject } from '@spooder/webui-module-sdk';
 import {
   FormTextInput,
   FormBoolSwitch,

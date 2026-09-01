@@ -1,6 +1,6 @@
 import React, { ReactNode, useEffect, useRef, useState } from 'react';
 import { faEye, faEyeSlash, faPlus, faMinus, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
-import { KeyedObject } from '../../../../../ui/Types';
+import { KeyedObject } from '@spooder/webui-module-sdk';
 import {
   Border,
   Box,

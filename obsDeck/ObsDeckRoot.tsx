@@ -1,7 +1,7 @@
 import { OscProvider } from '@spooder/webui-component-library';
 import React from 'react';
-import useServer from '../../../../app/hooks/useServer';
-import PageCircleLoader from '../../../../ui/common/input/general/PageCircleLoader';
+import { useServer } from '@spooder/webui-module-sdk';
+import { PageCircleLoader } from '@spooder/webui-module-sdk';
 import OBSDeck from './OBSDeck';
 
 // OBS talks to the webui over its own OSC socket rather than the shared one: tag='obs' points

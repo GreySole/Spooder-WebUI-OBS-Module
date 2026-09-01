@@ -7,7 +7,7 @@ import React, {
   useRef,
   useState,
 } from 'react';
-import { KeyedObject } from '../../../../../ui/Types';
+import { KeyedObject } from '@spooder/webui-module-sdk';
 import { useOSC } from '@spooder/webui-component-library';
 import useOBS from '../../useOBS';
 import { current } from '@reduxjs/toolkit';

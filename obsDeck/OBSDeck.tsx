@@ -7,7 +7,7 @@ import OutputController from './outputController/OutputController';
 import SourceControl from './sourceControl/SourceControl';
 import ObsLogin from './login/ObsLogin';
 import { Box, CircleLoader, useOSC } from '@spooder/webui-component-library';
-import PageCircleLoader from '../../../../ui/common/input/general/PageCircleLoader';
+import { PageCircleLoader } from '@spooder/webui-module-sdk';
 
 export default function OBS() {
   const { isReady: isOSCReady } = useOSC();

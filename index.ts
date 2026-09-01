@@ -1,5 +1,5 @@
 import { faGamepad } from '@fortawesome/free-solid-svg-icons';
-import type { ModuleDefinition } from '../../types';
+import type { ModuleDefinition } from '@spooder/webui-module-sdk';
 import FormOBSSceneItemSelect from './components/FormOBSSceneItemSelect';
 import OBSSceneItemSelect from './components/OBSSceneItemSelect';
 import ObsDeckRoot from './obsDeck/ObsDeckRoot';

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useFormContext } from 'react-hook-form';
 import useOBS from '../useOBS';
-import { KeyedObject } from '../../../../ui/Types';
+import { KeyedObject } from '@spooder/webui-module-sdk';
 import { useState } from 'react';
 import { SelectDropdown } from '@spooder/webui-component-library';
 

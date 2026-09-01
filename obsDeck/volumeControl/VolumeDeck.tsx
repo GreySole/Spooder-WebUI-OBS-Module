@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { KeyedObject } from '../../../../../ui/Types';
+import { KeyedObject } from '@spooder/webui-module-sdk';
 import VolumeControl from './VolumeControl';
 import VolumeGroupControl from './VolumeGroupControl';
 import { useObsWebsocketContext } from './VolumeContext';

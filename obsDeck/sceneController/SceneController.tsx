@@ -1,6 +1,6 @@
 import React, { ReactNode, useEffect, useState } from 'react';
 import { faTv, faArrowRight, faTableColumns } from '@fortawesome/free-solid-svg-icons';
-import { KeyedObject } from '../../../../../ui/Types';
+import { KeyedObject } from '@spooder/webui-module-sdk';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   Border,

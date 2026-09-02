@@ -1,0 +1,48 @@
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+
+export const obsApi = createApi({
+  reducerPath: 'obsApi',
+  baseQuery: fetchBaseQuery({ baseUrl: window.location.origin + '/obs' }),
+  endpoints: (builder) => ({
+    connectObs: builder.mutation({
+      query: (form) => ({
+        url: '/connect',
+        method: 'POST',
+        body: JSON.stringify(form),
+        headers: {
+          'Content-type': 'application/json; charset=UTF-8',
+        },
+      }),
+    }),
+    connectRemote: builder.mutation({
+      query: () => ({
+        url: '/connect_remote',
+        method: 'get',
+      }),
+    }),
+    disconnectRemote: builder.mutation({
+      query: () => ({
+        url: '/disconnect_remote',
+        method: 'get',
+      }),
+    }),
+    getObsStatus: builder.query({
+      query: () => '/get_connection_status',
+    }),
+    getObsSettings: builder.query({
+      query: () => '/get_output_settings',
+    }),
+    getScenes: builder.query({
+      query: () => '/get_scenes',
+    }),
+  }),
+});
+
+export const {
+  useConnectObsMutation,
+  useConnectRemoteMutation,
+  useDisconnectRemoteMutation,
+  useGetObsStatusQuery,
+  useGetObsSettingsQuery,
+  useGetScenesQuery,
+} = obsApi;

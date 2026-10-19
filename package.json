@@ -1,6 +1,6 @@
 {
   "name": "@spooder-webui-modules/obs",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "private": true,
   "description": "OBS integration module for the Spooder webui. Built as a Module Federation remote and published as a release asset.",
   "peerDependencies": {

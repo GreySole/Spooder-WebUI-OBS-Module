@@ -2,6 +2,11 @@ import { faGamepad } from '@fortawesome/free-solid-svg-icons';
 import type { ModuleDefinition } from '@spooder/webui-module-sdk';
 import FormOBSSceneItemSelect from './components/FormOBSSceneItemSelect';
 import OBSSceneItemSelect from './components/OBSSceneItemSelect';
+import {
+  FormObsInputSelect,
+  FormObsSceneItemSelect,
+  FormObsSceneSelect,
+} from './components/ObsNodePickers';
 import ObsDeckRoot from './obsDeck/ObsDeckRoot';
 import { obsControlApi } from './obsControlSlice';
 import { obsFetchApi } from './obsFetchSlice';
@@ -22,6 +27,14 @@ const ObsModule: ModuleDefinition = {
   // Plugin settings fields of `type: 'obs'` - a scene plus one of its items.
   pluginInputs: {
     obs: { form: FormOBSSceneItemSelect, controlled: OBSSceneItemSelect },
+  },
+  fieldRenderers: {
+    // 48 rather than the 40 CONTROL_HEIGHTS.select normally sizes a dropdown row to - see
+    // Discord's channelSelect/guildSelect comment (DiscordNodePickers): the focus ring this
+    // control's dropdown paints outside itself needs the few extra px.
+    sceneSelect: { component: FormObsSceneSelect, height: 48 },
+    inputSelect: { component: FormObsInputSelect, height: 48 },
+    sceneItemSelect: { component: FormObsSceneItemSelect, height: 48 },
   },
 };
 
